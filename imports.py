@@ -13,3 +13,10 @@ from sklearn.svm import SVR
 from sklearn.ensemble import RandomForestRegressor as rfr
 from sklearn.linear_model import LinearRegression, Lasso, Ridge
 from sklearn.metrics import mean_squared_error as mse, mean_absolute_error as mae
+
+def indexToSplit(X, Y, train_index, test_index):
+    xTrain = X.iloc[train_index,:]
+    yTrain = Y.iloc[train_index,:]
+    xTest = X.iloc[test_index,:]
+    yTest = Y.iloc[test_index,:]
+    return xTrain, xTest, yTrain, yTest

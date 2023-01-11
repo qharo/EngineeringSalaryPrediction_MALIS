@@ -13,7 +13,6 @@ class Preprocessor:
         df = pd.cut(df, bins=bins, labels=range(len(bins)-1))
         #df = pd.qcut(df, q=n, labels=range(n))
         return df
-    
 
     def preproc(self):
         df = self.df
