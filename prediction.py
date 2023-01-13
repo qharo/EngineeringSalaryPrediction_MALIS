@@ -5,8 +5,6 @@ from myLogger import myLog
 from exp3 import EXP3
 from exp4a import EXP4A
 
-
-
 if __name__ == '__main__':
     # READING THE DATA
     df = pd.read_csv("./data/archive/ds_salaries.csv")
@@ -40,7 +38,7 @@ if __name__ == '__main__':
     EXP3(X, Y, True)
 
     # POLY SELECTION
-    EXP4A(X, Y, False)
+    EXP4A(X, Y, True)
     
     # LINEAR SELECTION
     if EXP4B:

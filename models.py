@@ -40,7 +40,7 @@ def RidgeRegModel(xTrain, xTest, yTrain, yTest, verbose):
 def SVMModel(xTrain, xTest, yTrain, yTest, kernel, verbose, deg=5):
     model = SVR(kernel=kernel, degree=deg)
 
-    #print(yTrain)
+    # print(yTrain)
 
     model.fit(xTrain, yTrain)
     yhat = model.predict(xTest)
