@@ -13,9 +13,34 @@ def LinRegModel(xTrain, xTest, yTrain, yTest, verbose):
         myLog.indent(3, f"Score is: {model.score(xTest, yTest)}")
     return model
 
+def KNNModel(xTrain, xTest, yTrain, yTest, verbose):
+    model = KNeighborsRegressor(n_neighbors=10)
+    model.fit(xTrain, yTrain)
+    yhat = model.predict(xTest)    
+    if verbose:
+        myLog.indent(2, 'K-NEAREST NEIGHBOURS')
+        #print("\n" + 20*"-" + " Linear Reg ".center(20) + 20*"-")
+        myLog.indent(3, f"MSE is: {mse(yhat, yTest)}")
+        myLog.indent(3, f"MAE is {mae(yhat, yTest)}")
+        myLog.indent(3, f"Score is: {model.score(xTest, yTest)}")
+    return model
 
-def LassoRegModel(xTrain, xTest, yTrain, yTest, verbose):
-    model = Lasso()
+
+def RFCModel(xTrain, xTest, yTrain, yTest, ntrees, verbose):
+    model = RandomForestRegressor(n_estimators=ntrees)
+    model.fit(xTrain, yTrain)
+    yhat = model.predict(xTest)    
+    if verbose:
+        myLog.indent(2, 'RANDOM FOREST')
+        #print("\n" + 20*"-" + " Linear Reg ".center(20) + 20*"-")
+        myLog.indent(3, f"MSE is: {mse(yhat, yTest)}")
+        myLog.indent(3, f"MAE is {mae(yhat, yTest)}")
+        myLog.indent(3, f"Score is: {model.score(xTest, yTest)}")
+    return model
+
+
+def LassoRegModel(xTrain, xTest, yTrain, yTest, iter, verbose):
+    model = Lasso(max_iter=iter)
     model.fit(xTrain, yTrain)
     yhat = model.predict(xTest)    
     if verbose:
@@ -26,8 +51,8 @@ def LassoRegModel(xTrain, xTest, yTrain, yTest, verbose):
     return model
 
 
-def RidgeRegModel(xTrain, xTest, yTrain, yTest, verbose):
-    model = Ridge()
+def RidgeRegModel(xTrain, xTest, yTrain, yTest, solver, alpha, verbose):
+    model = Ridge(solver=solver, alpha=alpha)
     model.fit(xTrain, yTrain)
     yhat = model.predict(xTest)    
     if verbose:
@@ -49,4 +74,4 @@ def SVMModel(xTrain, xTest, yTrain, yTest, kernel, verbose, deg=5):
         myLog.indent(3, f"MSE is: {mse(yhat, yTest)}")
         myLog.indent(3, f"MAE is {mae(yhat, yTest)}")
         myLog.indent(3, f"Score is: {model.score(xTest, yTest)}\n")
-    return model, mse(yhat, yTest, squared=True)
+    return model
