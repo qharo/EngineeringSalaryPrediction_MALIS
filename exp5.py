@@ -17,16 +17,13 @@ def EXP5(X, Y, verbose):
 
     
     xTrain, xTest, yTrain, yTest = indexToSplit(X, Y, train_indices[0], test_indices[0])
-    if verbose: 
-        myLog.indent(2, "1 ESTIMATORS")
-    RFCModel(xTrain, xTest, yTrain, yTest, 1, verbose)
-    if verbose: 
-        myLog.indent(2, "5 ESTIMATORS")
-    RFCModel(xTrain, xTest, yTrain, yTest, 5, verbose)
-    if verbose: 
-        myLog.indent(2, "10 ESTIMATORS")
-    RFCModel(xTrain, xTest, yTrain, yTest, 10, verbose)
-    if verbose: 
-        myLog.indent(2, "100 ESTIMATORS")
-    RFCModel(xTrain, xTest, yTrain, yTest, 100, verbose)
+
+    TEST_VALUES = [100, 500, 250, 750]
+
+    for i in range(0, 4):
+        xTrain, xTest, yTrain, yTest = indexToSplit(X, Y, train_indices[i], test_indices[i])
+        if verbose: 
+            myLog.indent(2, f"{TEST_VALUES[i]} TREES")
+        RFCModel(xTrain, xTest, yTrain, yTest, TEST_VALUES[i], verbose)
+
     

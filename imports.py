@@ -17,6 +17,8 @@ from sklearn.ensemble import RandomForestRegressor
 from sklearn.neighbors import KNeighborsRegressor
 from keras.models import Sequential
 from keras.layers import Dense 
+import keras
+import pickle
 
 def indexToSplit(X, Y, train_index, test_index):
     xTrain = X.iloc[train_index,:]

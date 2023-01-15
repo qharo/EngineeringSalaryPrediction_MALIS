@@ -3,7 +3,7 @@ from models import *
 from preprocessing import *
 from myLogger import myLog
 from exp3 import EXP3
-from exp4a import EXP4A
+from exp4 import EXP4
 from exp5 import EXP5
 from exp6 import EXP6
 from exp7 import EXP7
@@ -43,30 +43,14 @@ if __name__ == '__main__':
     X = df.drop(['raw_salary'], axis=1)
 
     # VISUALIZATION
-    #visualize(X, Y)
-    EXP9(X, Y, True)
-    # MODEL SELECTION
-    #EXP3(X, Y, True)
-
-    # POLY SELECTION
-    #EXP4A(X, Y, False)
     
-    # LINEAR SELECTION
-    if EXP4B:
-        print("\n"+40*"#" + " EXP 3: LINEAR SELECTION ".center(20) + 40*"#")
-        print(" We shall consider 3 types of Linear Regressors: Linear, Lasso and Ridge")
-        kfolds = kf(n_splits=3, shuffle=True)
+    
+    #EXP3(X, Y, True)
+    EXP4(X, Y, True) # LINEAR AND POLY SELECTION
+    #EXP5(X, Y, True) # RFC TUNING
+    #EXP6(X, Y, True) # KNN TUNING
+    #EXP7(X, Y, True) # RIDGE REGRESSION TUNING
+    #EXP8(X, Y, True) # LASSO REGRESSION TUNING
+    #EXP9(X, Y, True) # NEURAL NETWORK
+    #EXP10(X, Y, True) # ENSEMBLE
 
-        train_indices = []
-        test_indices = []
-
-        for train_index, test_index in kfolds.split(X):
-            train_indices.append(train_index)
-            test_indices.append(test_index)
-        
-        xTrain, xTest, yTrain, yTest = indexToSplit(X, Y, train_indices[0], test_indices[0])
-        LinRegModel(xTrain, xTest, yTrain, yTest, EXP4B)
-        xTrain, xTest, yTrain, yTest = indexToSplit(X, Y, train_indices[1], test_indices[1])
-        LassoRegModel(xTrain, xTest, yTrain, yTest, EXP4B)
-        xTrain, xTest, yTrain, yTest = indexToSplit(X, Y, train_indices[2], test_indices[2])
-        RidgeRegModel(xTrain, xTest, yTrain, yTest, EXP4B)

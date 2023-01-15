@@ -13,8 +13,8 @@ def LinRegModel(xTrain, xTest, yTrain, yTest, verbose):
         myLog.indent(3, f"Score is: {model.score(xTest, yTest)}")
     return model
 
-def KNNModel(xTrain, xTest, yTrain, yTest, verbose):
-    model = KNeighborsRegressor(n_neighbors=10)
+def KNNModel(xTrain, xTest, yTrain, yTest, neighbours, verbose):
+    model = KNeighborsRegressor(n_neighbors=neighbours)
     model.fit(xTrain, yTrain)
     yhat = model.predict(xTest)    
     if verbose:
@@ -27,7 +27,7 @@ def KNNModel(xTrain, xTest, yTrain, yTest, verbose):
 
 
 def RFCModel(xTrain, xTest, yTrain, yTest, ntrees, verbose):
-    model = RandomForestRegressor(n_estimators=ntrees)
+    model = RandomForestRegressor(n_estimators=ntrees, criterion="absolute_error", bootstrap=True)
     model.fit(xTrain, yTrain)
     yhat = model.predict(xTest)    
     if verbose:
@@ -39,8 +39,8 @@ def RFCModel(xTrain, xTest, yTrain, yTest, ntrees, verbose):
     return model
 
 
-def LassoRegModel(xTrain, xTest, yTrain, yTest, iter, verbose):
-    model = Lasso(max_iter=iter)
+def LassoRegModel(xTrain, xTest, yTrain, yTest, tol, iter, verbose):
+    model = Lasso(max_iter=iter, tol=tol)
     model.fit(xTrain, yTrain)
     yhat = model.predict(xTest)    
     if verbose:

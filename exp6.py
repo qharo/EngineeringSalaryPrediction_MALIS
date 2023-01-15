@@ -15,17 +15,35 @@ def EXP6(X, Y, verbose):
         train_indices.append(train_index)
         test_indices.append(test_index)
 
+    TEST_VALUES = [1, 5, 10, 100]
+
+    for i in range(0, 4):
+        xTrain, xTest, yTrain, yTest = indexToSplit(X, Y, train_indices[i], test_indices[i])
+        if verbose: 
+            myLog.indent(2, f"{TEST_VALUES[i]} ESTIMATORS")
+        KNNModel(xTrain, xTest, yTrain, yTest, TEST_VALUES[i], verbose)
+
+    if verbose:
+        myLog.indent(1, "We find that 10 neighbours works best, so experiment again with finer values")
+
+    TEST_VALUES = [10, 30, 60, 90]
+
+    for i in range(0, 4):
+        xTrain, xTest, yTrain, yTest = indexToSplit(X, Y, train_indices[i], test_indices[i])
+        if verbose: 
+            myLog.indent(2, f"{TEST_VALUES[i]} ESTIMATORS")
+        KNNModel(xTrain, xTest, yTrain, yTest, TEST_VALUES[i], verbose)
+
     
-    xTrain, xTest, yTrain, yTest = indexToSplit(X, Y, train_indices[0], test_indices[0])
-    if verbose: 
-        myLog.indent(2, "1 ESTIMATORS")
-    KNNModel(xTrain, xTest, yTrain, yTest, verbose)
-    # if verbose: 
-    #     myLog.indent(2, "5 ESTIMATORS")
-    # RFCModel(xTrain, xTest, yTrain, yTest, 5, verbose)
-    # if verbose: 
-    #     myLog.indent(2, "10 ESTIMATORS")
-    # RFCModel(xTrain, xTest, yTrain, yTest, 10, verbose)
-    # if verbose: 
-    #     myLog.indent(2, "100 ESTIMATORS")
-    # RFCModel(xTrain, xTest, yTrain, yTest, 100, verbose)
+    if verbose:
+        myLog.indent(1, "We find that beween 5-10 neighbours works best, so experiment again with finer values")
+
+    TEST_VALUES = [5, 7, 9, 11]
+
+    for i in range(0, 4):
+        xTrain, xTest, yTrain, yTest = indexToSplit(X, Y, train_indices[i], test_indices[i])
+        if verbose: 
+            myLog.indent(2, f"{TEST_VALUES[i]} ESTIMATORS")
+        KNNModel(xTrain, xTest, yTrain, yTest, TEST_VALUES[i], verbose)
+    
+    myLog.indent(1, "7 seems to yield best results after multiple tests")
