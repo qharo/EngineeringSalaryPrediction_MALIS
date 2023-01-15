@@ -15,9 +15,9 @@ from sklearn.linear_model import LinearRegression, Lasso, Ridge
 from sklearn.metrics import mean_squared_error as mse, mean_absolute_error as mae
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.neighbors import KNeighborsRegressor
-from keras.models import Sequential
-from keras.layers import Dense 
 import keras
+from keras.models import Sequential
+from keras.layers import Dense
 import pickle
 
 def indexToSplit(X, Y, train_index, test_index):

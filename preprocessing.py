@@ -90,8 +90,10 @@ class Preprocessor:
         TRANSFORMS = [(value, [LabelBinarizer()]) for value in ['title', 'company_loc', 'emp_loc']]
         TRANSFORMS += [(['exp'], [OrdinalEncoder()])]
         #TRANSFORMS += [(['raw_salary'], [StandardScaler()])]
-        TRANSFORMS += [(['salary'], [SimpleImputer()])]
+        TRANSFORMS += [(['raw_salary'], [SimpleImputer()])]
         TRANSFORMS += [(['year'], OrdinalEncoder())]
+
+        print(df.columns)
 
         mapper = DataFrameMapper(TRANSFORMS, df_out=True)
         return mapper.fit_transform(df)

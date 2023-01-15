@@ -8,7 +8,7 @@ from exp5 import EXP5
 from exp6 import EXP6
 from exp7 import EXP7
 from exp8 import EXP8
-# from exp9 import EXP9
+from exp9 import EXP9
 from exp10 import EXP10
 from visualizer import visualize
 
@@ -46,11 +46,11 @@ if __name__ == '__main__':
     
     
     #EXP3(X, Y, True)
-    EXP4(X, Y, True) # LINEAR AND POLY SELECTION
+    #EXP4(X, Y, True) # LINEAR AND POLY SELECTION
     #EXP5(X, Y, True) # RFC TUNING
     #EXP6(X, Y, True) # KNN TUNING
     #EXP7(X, Y, True) # RIDGE REGRESSION TUNING
     #EXP8(X, Y, True) # LASSO REGRESSION TUNING
     #EXP9(X, Y, True) # NEURAL NETWORK
-    #EXP10(X, Y, True) # ENSEMBLE
+    EXP10(X, Y, True) # ENSEMBLE
 
