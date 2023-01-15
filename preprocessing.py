@@ -80,9 +80,9 @@ class Preprocessor:
             print("\n" + 100*"-")
 
         else:
-            df = df[df['title'].map(df['title'].value_counts()) > 20]        
-            df = df[df['company_loc'].map(df['company_loc'].value_counts()) > 15]    
-            df = df[df['emp_loc'].map(df['emp_loc'].value_counts()) > 10]
+            # df = df[df['title'].map(df['title'].value_counts()) > 20]        
+            df = df[df['company_loc'].map(df['company_loc'].value_counts()) > 5]    
+            df = df[df['emp_loc'].map(df['emp_loc'].value_counts()) > 3]
 
 
         #df['raw_salary'] = binning(df['raw_salary'], 10)
@@ -90,7 +90,7 @@ class Preprocessor:
         TRANSFORMS = [(value, [LabelBinarizer()]) for value in ['title', 'company_loc', 'emp_loc']]
         TRANSFORMS += [(['exp'], [OrdinalEncoder()])]
         #TRANSFORMS += [(['raw_salary'], [StandardScaler()])]
-        TRANSFORMS += [(['raw_salary'], [SimpleImputer()])]
+        TRANSFORMS += [(['salary'], [SimpleImputer()])]
         TRANSFORMS += [(['year'], OrdinalEncoder())]
 
         mapper = DataFrameMapper(TRANSFORMS, df_out=True)

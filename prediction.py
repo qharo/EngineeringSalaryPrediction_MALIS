@@ -4,6 +4,13 @@ from preprocessing import *
 from myLogger import myLog
 from exp3 import EXP3
 from exp4a import EXP4A
+from exp5 import EXP5
+from exp6 import EXP6
+from exp7 import EXP7
+from exp8 import EXP8
+# from exp9 import EXP9
+from exp10 import EXP10
+from visualizer import visualize
 
 if __name__ == '__main__':
     # READING THE DATA
@@ -25,6 +32,7 @@ if __name__ == '__main__':
 
     data_mean, data_std = np.mean(df['raw_salary']), np.std(df['raw_salary'])
     
+
     # IDENTIFYING AND REMOVING OUTLIERS
     cut_off = data_std * 2
     lower, upper = data_mean - cut_off, data_mean + cut_off
@@ -34,12 +42,31 @@ if __name__ == '__main__':
     Y = df[['raw_salary']]
     X = df.drop(['raw_salary'], axis=1)
 
+    # VISUALIZATION
+    # visualize(X, Y)
+    # EXP9(X, Y, True)
     # MODEL SELECTION
-    EXP3(X, Y, True)
 
-    # POLY SELECTION
-    EXP4A(X, Y, True)
-    
+    # SVM
+    # EXP3(X, Y, True)
+
+    # SVM POLY 
+    # EXP4A(X, Y, True)
+
+    # RFC
+    # EXP5(X, Y, True)
+
+    # KNN
+    # EXP6(X, Y, True)
+
+    # Ridge
+    # EXP7(X, Y, True)
+
+    # RIDGE REGRESSION TUNING
+    # EXP8(X, Y, True)
+
+    EXP10(X, Y, True)
+
     # LINEAR SELECTION
     if EXP4B:
         print("\n"+40*"#" + " EXP 3: LINEAR SELECTION ".center(20) + 40*"#")
