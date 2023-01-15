@@ -3,7 +3,10 @@ from imports import *
 from models import *
 from sklearn.ensemble import VotingRegressor    
 from sklearn.ensemble import BaggingRegressor   
-from sklearn.ensemble import StackingRegressor    
+from sklearn.ensemble import StackingRegressor  
+
+import warnings
+warnings.filterwarnings("ignore")
 
 def EXP10(X, Y, verbose):    
     if verbose:

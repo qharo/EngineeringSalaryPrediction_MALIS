@@ -4,7 +4,7 @@ from models import *
 
 def EXP5(X, Y, verbose):    
     if verbose:
-        myLog.heading("EXP 5: NUMBER OF ESTIMATORS SELECTION")
+        myLog.heading("EXP 5: RFC")
         myLog.indent(1, "We choose 4 values of estimators: 1, 5, 10, 100")
     kfolds = kf(n_splits=4, shuffle=True)
 

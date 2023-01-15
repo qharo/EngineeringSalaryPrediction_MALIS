@@ -8,7 +8,7 @@ from exp5 import EXP5
 from exp6 import EXP6
 from exp7 import EXP7
 from exp8 import EXP8
-from exp9 import EXP9
+# from exp9 import EXP9
 from exp10 import EXP10
 from visualizer import visualize
 

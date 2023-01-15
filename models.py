@@ -4,14 +4,14 @@ from myLogger import myLog
 def LinRegModel(xTrain, xTest, yTrain, yTest, verbose):
     model = LinearRegression()
     model.fit(xTrain, yTrain)
-    yhat = model.predict(xTest)    
+    yhat = model.predict(xTest)      
     if verbose:
         myLog.indent(2, 'LINEAR REGRESSION')
         #print("\n" + 20*"-" + " Linear Reg ".center(20) + 20*"-")
         myLog.indent(3, f"MSE is: {mse(yhat, yTest)}")
         myLog.indent(3, f"MAE is {mae(yhat, yTest)}")
         myLog.indent(3, f"Score is: {model.score(xTest, yTest)}")
-    return model
+    return model, yhat
 
 def KNNModel(xTrain, xTest, yTrain, yTest, neighbours, verbose):
     model = KNeighborsRegressor(n_neighbors=neighbours)
@@ -23,7 +23,7 @@ def KNNModel(xTrain, xTest, yTrain, yTest, neighbours, verbose):
         myLog.indent(3, f"MSE is: {mse(yhat, yTest)}")
         myLog.indent(3, f"MAE is {mae(yhat, yTest)}")
         myLog.indent(3, f"Score is: {model.score(xTest, yTest)}")
-    return model
+    return model, yhat
 
 
 def RFCModel(xTrain, xTest, yTrain, yTest, ntrees, verbose):
@@ -36,7 +36,7 @@ def RFCModel(xTrain, xTest, yTrain, yTest, ntrees, verbose):
         myLog.indent(3, f"MSE is: {mse(yhat, yTest)}")
         myLog.indent(3, f"MAE is {mae(yhat, yTest)}")
         myLog.indent(3, f"Score is: {model.score(xTest, yTest)}")
-    return model
+    return model, yhat
 
 
 def LassoRegModel(xTrain, xTest, yTrain, yTest, tol, iter, verbose):
@@ -48,7 +48,7 @@ def LassoRegModel(xTrain, xTest, yTrain, yTest, tol, iter, verbose):
         print(f" MSE is: {mse(yhat, yTest)}")
         print(f" MAE is {mae(yhat, yTest)}")
         print(f" Score is: {model.score(xTest, yTest)}\n")
-    return model
+    return model, yhat
 
 
 def RidgeRegModel(xTrain, xTest, yTrain, yTest, solver, alpha, verbose):
@@ -60,12 +60,12 @@ def RidgeRegModel(xTrain, xTest, yTrain, yTest, solver, alpha, verbose):
         print(f" MSE is: {mse(yhat, yTest)}")
         print(f" MAE is {mae(yhat, yTest)}")
         print(f" Score is: {model.score(xTest, yTest)}\n")
-    return model
+    return model, yhat
 
 def SVMModel(xTrain, xTest, yTrain, yTest, kernel, verbose, deg=5):
     model = SVR(kernel=kernel, degree=deg)
 
-    #print(yTrain)
+    # print(yTrain)
 
     model.fit(xTrain, yTrain)
     yhat = model.predict(xTest)
@@ -74,4 +74,4 @@ def SVMModel(xTrain, xTest, yTrain, yTest, kernel, verbose, deg=5):
         myLog.indent(3, f"MSE is: {mse(yhat, yTest)}")
         myLog.indent(3, f"MAE is {mae(yhat, yTest)}")
         myLog.indent(3, f"Score is: {model.score(xTest, yTest)}\n")
-    return model
+    return model, yhat

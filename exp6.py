@@ -4,7 +4,7 @@ from models import *
 
 def EXP6(X, Y, verbose):    
     if verbose:
-        myLog.heading("EXP 5: NUMBER OF ESTIMATORS SELECTION")
+        myLog.heading("EXP 6: KNN")
         #myLog.indent(1, "4 models to consider: Linear Regression, SVM (Poly), SVM (RBF), SVM (Linear)")
     kfolds = kf(n_splits=4, shuffle=True)
 
