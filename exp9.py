@@ -14,14 +14,9 @@ def EXP9(X, Y, verbose):
     model.add(Dense(32, 
                     kernel_initializer='normal', 
                     activation='relu'))
-
-    # # hidden layer
-    # model.add(Dense(16, 
-    #                 kernel_initializer='normal', 
-    #                 activation='relu'))
-    # model.add(Dense(4, 
-    #                 kernel_initializer='normal', 
-    #                 activation='relu'))
+    model.add(Dense(4, 
+                    kernel_initializer='normal', 
+                    activation='relu'))
     # output layer, with one neuron
     model.add(Dense(1, kernel_initializer='normal'))
     # compile the model

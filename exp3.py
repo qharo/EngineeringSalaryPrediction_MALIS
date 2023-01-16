@@ -16,7 +16,6 @@ def EXP3(X, Y, verbose=False):
         test_indices.append(test_index)
     
     print(" Kernel: Linear")
-    xTrain, xTest, yTrain, yTest = indexToSplit(X, Y, train_indices[0], test_indices[0])
     xTrain, xTest, yTrain, yTest = indexToSplit(X, Y, train_indices[1], test_indices[1])
     SVMModel(xTrain, xTest, yTrain, yTest, 'linear', verbose)
 
