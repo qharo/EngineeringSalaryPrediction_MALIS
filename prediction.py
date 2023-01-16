@@ -48,12 +48,12 @@ if __name__ == '__main__':
     Y = df[['raw_salary']]
     X = df.drop(['raw_salary'], axis=1)
     
-    #EXP3(X, Y, True)
-    #EXP4(X, Y, True) # LINEAR AND POLY SELECTION
-    #EXP5(X, Y, True) # RFC TUNING
-    #EXP6(X, Y, True) # KNN TUNING
-    #EXP7(X, Y, True) # RIDGE REGRESSION TUNING
-    #EXP8(X, Y, True) # LASSO REGRESSION TUNING
-    #EXP9(X, Y, True) # NEURAL NETWORK
-    #EXP10(X, Y, True) # ENSEMBLE
+    EXP3(X, Y, True)
+    EXP4(X, Y, True) # LINEAR AND POLY SELECTION
+    EXP5(X, Y, True) # RFC TUNING
+    EXP6(X, Y, True) # KNN TUNING
+    EXP7(X, Y, True) # RIDGE REGRESSION TUNING
+    EXP8(X, Y, True) # LASSO REGRESSION TUNING
+    EXP9(X, Y, True) # NEURAL NETWORK
+    EXP10(X, Y, True) # ENSEMBLE
 
