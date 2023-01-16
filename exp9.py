@@ -4,6 +4,8 @@ from models import *
 
 def EXP9(X, Y, verbose): 
 
+    salary_sd = 70429.13957426547   
+
     if verbose:
         myLog.heading("EXP 9: NEURAL NETWORK")
 
@@ -23,14 +25,16 @@ def EXP9(X, Y, verbose):
     # output layer, with one neuron
     model.add(Dense(1, kernel_initializer='normal'))
     # compile the model
-    model.compile(loss='mean_absolute_error', optimizer=keras.optimizers.Adagrad(learning_rate=10))
+    model.compile(loss='mean_absolute_error', optimizer='sgd')
     
     
     xTrain, xTest, yTrain, yTest = tts(X, Y, test_size=0.1, shuffle=True)
 
-    model.fit(xTrain, yTrain, batch_size=64, epochs=10, validation_split=0.1)
+    model.fit(xTrain, yTrain, epochs=100, validation_split=0.1)
 
     predictions = model.predict(xTest)
 
 
-    myLog.indent(1, f"MAE IS: {mae(predictions, yTest)}")
+    myLog.indent(1, f"MAE IS: {mae(predictions, yTest)*salary_sd}")
+    myLog.indent(1, f"MSE IS: {mse(predictions, yTest)*salary_sd}")
+    myLog.indent(1, f"RMSE IS: {np.sqrt(mse(predictions, yTest))*salary_sd}")

@@ -28,7 +28,13 @@ if __name__ == '__main__':
     EXP4B = False
 
     # PREPROCESSING CLASS
-    df = Preprocessor(df, verbose=EXP2).preproc().reset_index(drop=True)
+    Prep = Preprocessor(df, verbose=EXP2)
+    df = Prep.preproc().reset_index(drop=True)
+
+    salary_avg = Prep.salary_avg
+    salary_sd = Prep.salary_sd
+
+    #print(salary_sd, salary_avg)
 
     data_mean, data_std = np.mean(df['raw_salary']), np.std(df['raw_salary'])
     
@@ -41,9 +47,6 @@ if __name__ == '__main__':
     outliers = [x for x in df['raw_salary'] if x > upper]
     Y = df[['raw_salary']]
     X = df.drop(['raw_salary'], axis=1)
-
-    # VISUALIZATION
-    
     
     #EXP3(X, Y, True)
     #EXP4(X, Y, True) # LINEAR AND POLY SELECTION
@@ -52,5 +55,5 @@ if __name__ == '__main__':
     #EXP7(X, Y, True) # RIDGE REGRESSION TUNING
     #EXP8(X, Y, True) # LASSO REGRESSION TUNING
     #EXP9(X, Y, True) # NEURAL NETWORK
-    EXP10(X, Y, True) # ENSEMBLE
+    #EXP10(X, Y, True) # ENSEMBLE
 

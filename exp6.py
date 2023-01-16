@@ -46,4 +46,4 @@ def EXP6(X, Y, verbose):
             myLog.indent(2, f"{TEST_VALUES[i]} ESTIMATORS")
         KNNModel(xTrain, xTest, yTrain, yTest, TEST_VALUES[i], verbose)
     
-    myLog.indent(1, "7 seems to yield best results after multiple tests")
+    myLog.indent(1, "7 - 9 seems to yield best results after multiple tests")

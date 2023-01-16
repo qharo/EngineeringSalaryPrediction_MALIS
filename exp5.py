@@ -26,6 +26,8 @@ def EXP5(X, Y, verbose):
             myLog.indent(2, f"{TEST_VALUES[i]} TREES")
         RFCModel(xTrain, xTest, yTrain, yTest, TEST_VALUES[i], verbose)
 
+    if verbose:
+        myLog.indent(1, "We find a larger number of trees works best, so experiment again with different values")
 
     TEST_VALUES = [100, 500, 250, 750]
 
@@ -34,5 +36,7 @@ def EXP5(X, Y, verbose):
         if verbose: 
             myLog.indent(2, f"{TEST_VALUES[i]} TREES")
         RFCModel(xTrain, xTest, yTrain, yTest, TEST_VALUES[i], verbose)
+    
+    myLog.indent(1, "250-500 seems to yield best results after multiple tests")
 
     

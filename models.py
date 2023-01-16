@@ -1,6 +1,8 @@
 from imports import *
 from myLogger import myLog
 
+salary_sd = 70429.13957426547 
+
 def LinRegModel(xTrain, xTest, yTrain, yTest, verbose):
     model = LinearRegression()
     model.fit(xTrain, yTrain)
@@ -8,9 +10,13 @@ def LinRegModel(xTrain, xTest, yTrain, yTest, verbose):
     if verbose:
         myLog.indent(2, 'LINEAR REGRESSION')
         #print("\n" + 20*"-" + " Linear Reg ".center(20) + 20*"-")
-        myLog.indent(3, f"MSE is: {mse(yhat, yTest)}")
-        myLog.indent(3, f"MAE is {mae(yhat, yTest)}")
-        myLog.indent(3, f"Score is: {model.score(xTest, yTest)}")
+        MSE = mse(yhat, yTest)
+        RMSE = np.sqrt(MSE)
+        MAE = mae(yhat, yTest)
+        myLog.indent(3, f"MSE is: {(MSE*salary_sd)}")
+        myLog.indent(3, f"RMSE is: {(RMSE*salary_sd)}")
+        myLog.indent(3, f"MAE is {(MAE*salary_sd)}")
+        myLog.indent(3, f"Score is: {model.score(xTest, yTest)}\n")
     return model
 
 def KNNModel(xTrain, xTest, yTrain, yTest, neighbours, verbose):
@@ -18,11 +24,14 @@ def KNNModel(xTrain, xTest, yTrain, yTest, neighbours, verbose):
     model.fit(xTrain, yTrain)
     yhat = model.predict(xTest)    
     if verbose:
-        myLog.indent(2, 'K-NEAREST NEIGHBOURS')
-        #print("\n" + 20*"-" + " Linear Reg ".center(20) + 20*"-")
-        myLog.indent(3, f"MSE is: {mse(yhat, yTest)}")
-        myLog.indent(3, f"MAE is {mae(yhat, yTest)}")
-        myLog.indent(3, f"Score is: {model.score(xTest, yTest)}")
+        myLog.indent(2, 'K-NEAREST NEIGHBOURS')        
+        MSE = mse(yhat, yTest)
+        RMSE = np.sqrt(MSE)
+        MAE = mae(yhat, yTest)
+        myLog.indent(3, f"MSE is: {(MSE*salary_sd)}")
+        myLog.indent(3, f"RMSE is: {(RMSE*salary_sd)}")
+        myLog.indent(3, f"MAE is {(MAE*salary_sd)}")
+        myLog.indent(3, f"Score is: {model.score(xTest, yTest)}\n")
     return model
 
 
@@ -32,10 +41,13 @@ def RFCModel(xTrain, xTest, yTrain, yTest, ntrees, verbose):
     yhat = model.predict(xTest)    
     if verbose:
         myLog.indent(2, 'RANDOM FOREST')
-        #print("\n" + 20*"-" + " Linear Reg ".center(20) + 20*"-")
-        myLog.indent(3, f"MSE is: {mse(yhat, yTest)}")
-        myLog.indent(3, f"MAE is {mae(yhat, yTest)}")
-        myLog.indent(3, f"Score is: {model.score(xTest, yTest)}")
+        MSE = mse(yhat, yTest)
+        RMSE = np.sqrt(MSE)
+        MAE = mae(yhat, yTest)
+        myLog.indent(3, f"MSE is: {(MSE*salary_sd)}")
+        myLog.indent(3, f"RMSE is: {(RMSE*salary_sd)}")
+        myLog.indent(3, f"MAE is {(MAE*salary_sd)}")
+        myLog.indent(3, f"Score is: {model.score(xTest, yTest)}\n")
     return model
 
 
@@ -45,9 +57,13 @@ def LassoRegModel(xTrain, xTest, yTrain, yTest, tol, iter, verbose):
     yhat = model.predict(xTest)    
     if verbose:
         print("\n" + 20*"-" + " Lasso Reg ".center(20) + 20*"-")
-        print(f" MSE is: {mse(yhat, yTest)}")
-        print(f" MAE is {mae(yhat, yTest)}")
-        print(f" Score is: {model.score(xTest, yTest)}\n")
+        MSE = mse(yhat, yTest)
+        RMSE = np.sqrt(MSE)
+        MAE = mae(yhat, yTest)
+        myLog.indent(3, f"MSE is: {(MSE*salary_sd)}")
+        myLog.indent(3, f"RMSE is: {(RMSE*salary_sd)}")
+        myLog.indent(3, f"MAE is {(MAE*salary_sd)}")
+        myLog.indent(3, f"Score is: {model.score(xTest, yTest)}\n")
     return model
 
 
@@ -57,9 +73,13 @@ def RidgeRegModel(xTrain, xTest, yTrain, yTest, solver, alpha, verbose):
     yhat = model.predict(xTest)    
     if verbose:
         print("\n" + 20*"-" + " Ridge Reg ".center(20) + 20*"-")
-        print(f" MSE is: {mse(yhat, yTest)}")
-        print(f" MAE is {mae(yhat, yTest)}")
-        print(f" Score is: {model.score(xTest, yTest)}\n")
+        MSE = mse(yhat, yTest)
+        RMSE = np.sqrt(MSE)
+        MAE = mae(yhat, yTest)
+        myLog.indent(3, f"MSE is: {(MSE*salary_sd)}")
+        myLog.indent(3, f"RMSE is: {(RMSE*salary_sd)}")
+        myLog.indent(3, f"MAE is {(MAE*salary_sd)}")
+        myLog.indent(3, f"Score is: {model.score(xTest, yTest)}\n")
     return model
 
 def SVMModel(xTrain, xTest, yTrain, yTest, kernel, verbose, deg=5):
@@ -71,7 +91,11 @@ def SVMModel(xTrain, xTest, yTrain, yTest, kernel, verbose, deg=5):
     yhat = model.predict(xTest)
     if verbose:
         myLog.indent(2, 'SVM: LINEAR')
-        myLog.indent(3, f"MSE is: {mse(yhat, yTest)}")
-        myLog.indent(3, f"MAE is {mae(yhat, yTest)}")
+        MSE = mse(yhat, yTest)
+        RMSE = np.sqrt(MSE)
+        MAE = mae(yhat, yTest)
+        myLog.indent(3, f"MSE is: {(MSE*salary_sd)}")
+        myLog.indent(3, f"RMSE is: {(RMSE*salary_sd)}")
+        myLog.indent(3, f"MAE is {(MAE*salary_sd)}")
         myLog.indent(3, f"Score is: {model.score(xTest, yTest)}\n")
     return model

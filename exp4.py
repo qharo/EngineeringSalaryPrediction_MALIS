@@ -24,7 +24,7 @@ def EXP4(X, Y, verbose=False):
 
     if verbose:
         print("\n"+40*"#" + " EXP 3: LINEAR SELECTION ".center(20) + 40*"#")
-        print(" We shall consider 3 types of Linear Regressors: Linear, Lasso and Ridge")
+        myLog.indent(1, " We shall consider 3 types of Linear Regressors: Linear, Lasso and Ridge")
     kfolds = kf(n_splits=3, shuffle=True)
 
     train_indices = []

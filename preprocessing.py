@@ -4,6 +4,8 @@ class Preprocessor:
     def __init__(self, df, verbose):
         self.df = df
         self.verbose = verbose
+        self.salary_avg = 0
+        self.salary_sd = 0
 
     def binning(df, n):
         mini = min(df)-1
@@ -91,9 +93,14 @@ class Preprocessor:
         TRANSFORMS += [(['exp'], [OrdinalEncoder()])]
         #TRANSFORMS += [(['raw_salary'], [StandardScaler()])]
         TRANSFORMS += [(['raw_salary'], [SimpleImputer()])]
-        TRANSFORMS += [(['year'], OrdinalEncoder())]
 
-        print(df.columns)
+        self.salary_sd = np.std(np.array(df['raw_salary']))
+        self.salary_avg = np.average(np.array(df[['raw_salary']]))
+
+        df['raw_salary'] = df['raw_salary'] - self.salary_avg
+        df['raw_salary'] = df['raw_salary']/(self.salary_sd)
+
+        TRANSFORMS += [(['year'], OrdinalEncoder())]
 
         mapper = DataFrameMapper(TRANSFORMS, df_out=True)
         return mapper.fit_transform(df)
